@@ -1,23 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth/auth.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.scss'
+  styleUrl: './signup.component.scss',
 })
 export class SignupComponent implements OnInit {
-
   isSpinning: boolean = false;
   signupForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private message: NzMessageService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.signupForm = this.fb.group({
       name: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required]],
+      password: [null, [Validators.required, Validators.minLength(6)]],
       checkPassword: [null, [Validators.required, this.confirmationValidator]],
     });
   }
@@ -31,7 +38,28 @@ export class SignupComponent implements OnInit {
     return {};
   };
 
+  isRegisteredEmail(email: string) {
+    if (!email) return;
+
+    this.authService.checkEmailExists(email).subscribe((res) => {
+      if (res) {
+        this.signupForm.get('email')!.setErrors({ emailExists: true });
+      }
+    });
+  }
+
   register() {
-    console.log(this.signupForm.value);
+    this.authService.register(this.signupForm.value).subscribe(
+      (response) => {
+        if (!response.id) {
+          return;
+        }
+        this.message.success('Successfully signed up!', { nzDuration: 3000 });
+        this.router.navigateByUrl('/login');
+      },
+      (error) => {
+        this.message.error('Failed to sign up!', { nzDuration: 3000 });
+      }
+    );
   }
 }
