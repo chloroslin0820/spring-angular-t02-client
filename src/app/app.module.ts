@@ -18,6 +18,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(en);
 
@@ -37,6 +38,7 @@ registerLocaleData(en);
     NzFormModule,
     NzButtonModule,
     NzInputModule,
+    ReactiveFormsModule,
   ],
   providers: [
     provideClientHydration(),
