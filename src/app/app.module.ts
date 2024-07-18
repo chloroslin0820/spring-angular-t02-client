@@ -13,12 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient } from '@angular/common/http';
 import { HeaderComponent } from './layouts/header/header.component';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzSpinModule } from 'ng-zorro-antd/spin';
-import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzInputModule } from 'ng-zorro-antd/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgZorroImportsModules } from './NgZorroImportsModules';
 
 registerLocaleData(en);
 
@@ -33,12 +29,8 @@ registerLocaleData(en);
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NzLayoutModule,
-    NzSpinModule,
-    NzFormModule,
-    NzButtonModule,
-    NzInputModule,
     ReactiveFormsModule,
+    NgZorroImportsModules,
   ],
   providers: [
     provideClientHydration(),
