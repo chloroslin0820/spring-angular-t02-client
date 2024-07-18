@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SignupRequest } from '../../../types';
+import { LoginRequest, SignupRequest } from '../../../types';
 import { Observable } from 'rxjs';
 
 const API_URL = ['http://localhost:8080'];
@@ -14,6 +14,10 @@ export class AuthService {
 
   register(signupRequest: SignupRequest): Observable<any> {
     return this.http.post(`${API_URL}/api/auth/signup`, signupRequest);
+  }
+
+  login(loginRequest: LoginRequest): Observable<any> {
+    return this.http.post(`${API_URL}/api/auth/login`, loginRequest);
   }
 
   checkEmailExists(email: string): Observable<boolean> {
