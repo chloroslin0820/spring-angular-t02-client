@@ -16,13 +16,13 @@ export class StorageService {
     window.localStorage.setItem(TOKEN, token);
   }
 
-  static saveUser(user: any): void {
+  static saveUser(user: User): void {
     window.localStorage.removeItem(USER);
     window.localStorage.setItem(USER, JSON.stringify(user));
   }
 
-  static getToken(): string {
-    return window.localStorage.getItem(TOKEN) || '';
+  static getToken(): string | null {
+    return window.localStorage.getItem(TOKEN);
   }
 
   static getUser(): User {
@@ -37,13 +37,13 @@ export class StorageService {
     if (!this.getToken()) {
       return false;
     }
-    return this.getUserRole() === 'ADMIN';
+    return this.getUserRole() === 'Admin';
   }
 
   static isCustomerLoggedIn(): boolean {
     if (!this.getToken()) {
       return false;
     }
-    return this.getUserRole() === 'CUSTOMER';
+    return this.getUserRole() === 'Customer';
   }
 }
