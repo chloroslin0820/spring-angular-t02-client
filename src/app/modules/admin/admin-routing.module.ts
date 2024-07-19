@@ -4,10 +4,12 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { PostCarComponent } from './components/post-car/post-car.component';
 import { NgZorroImportsModules } from '../../NgZorroImportsModules';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UpdateCarComponent } from './components/update-car/update-car.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: AdminDashboardComponent },
-  { path: 'car', component: PostCarComponent }
+  { path: 'car', component: PostCarComponent },
+  { path: 'car/:id', component: UpdateCarComponent}
 ];
 
 @NgModule({
