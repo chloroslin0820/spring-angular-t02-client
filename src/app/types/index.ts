@@ -27,5 +27,6 @@ export interface CarDto {
   year: Date;
   image?: File;
   returnImage?: Uint8Array;
+  processedImage?: string;
 }
 

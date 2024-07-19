@@ -21,6 +21,12 @@ export class AdminService {
     });
   }
 
+  getAllCars(): Observable<CarDto[]> {
+    return this.http.get<CarDto[]>(`${API_URL}/api/admin/cars`, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
   createAuthorizationHeader() {
     let authHeaders: HttpHeaders = new HttpHeaders();
     return authHeaders.set(
