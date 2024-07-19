@@ -1,49 +1,51 @@
-import { Injectable } from '@angular/core';
-import { User } from '../../../types';
+import { User } from "../../../types";
 
-const TOKEN = 'token';
-const USER = 'user';
-
-@Injectable({
-  providedIn: 'root'
-})
 export class StorageService {
-
-  constructor() { }
-
-  static saveToken(token: string): void {
-    window.localStorage.removeItem(TOKEN);
-    window.localStorage.setItem(TOKEN, token);
+  private static isBrowser(): boolean {
+    return typeof window !== 'undefined';
   }
 
-  static saveUser(user: User): void {
-    window.localStorage.removeItem(USER);
-    window.localStorage.setItem(USER, JSON.stringify(user));
+  static saveToken(token: string): void {
+    if (this.isBrowser()) {
+      window.localStorage.setItem('token', token);
+    }
   }
 
   static getToken(): string | null {
-    return window.localStorage.getItem(TOKEN);
+    if (this.isBrowser()) {
+      return window.localStorage.getItem('token');
+    }
+    return null;
   }
 
-  static getUser(): User {
-    return JSON.parse(window.localStorage.getItem(USER) || '{}');
+  static clearUserStorage(): void {
+    if (this.isBrowser()) {
+      window.localStorage.removeItem('token');
+      window.localStorage.removeItem('user');
+    }
   }
 
-  static getUserRole(): string {
-    return JSON.parse(window.localStorage.getItem(USER) || '{}').userRole;
+  static saveUser(user: User): void {
+    if (this.isBrowser()) {
+      window.localStorage.setItem('user', JSON.stringify(user));
+    }
+  }
+
+  static getUser(): User | null {
+    if (this.isBrowser()) {
+      const user = window.localStorage.getItem('user');
+      return user ? JSON.parse(user) : null;
+    }
+    return null;
   }
 
   static isAdminLoggedIn(): boolean {
-    if (!this.getToken()) {
-      return false;
-    }
-    return this.getUserRole() === 'Admin';
+    const user = this.getUser();
+    return user ? user.userRole === 'Admin' : false;
   }
 
   static isCustomerLoggedIn(): boolean {
-    if (!this.getToken()) {
-      return false;
-    }
-    return this.getUserRole() === 'Customer';
+    const user = this.getUser();
+    return user ? user.userRole === 'Customer' : false;
   }
 }

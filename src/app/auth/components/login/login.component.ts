@@ -31,23 +31,25 @@ export class LoginComponent {
 
   login() {
     this.authService.login(this.loginForm.value).subscribe((res: User) => {
-      console.log(res);
-      if (res.userId != null) {
-        const user: User = {
-          jwt: res.jwt,
-          userId: res.userId,
-          userRole: res.userRole,
-        };
-        StorageService.saveUser(user);
-        StorageService.saveToken(user.jwt);
-        if (StorageService.isAdminLoggedIn()) {
-          this.router.navigateByUrl('/admin/dashboard');
-        } else if (StorageService.isCustomerLoggedIn()) {
-          this.router.navigateByUrl('/customer/dashboard');
-        } else {
-          this.message.error('Bad Credentials', { nzDuration: 5000 });
+        if (res.userId != null) {
+          const user: User = {
+            jwt: res.jwt,
+            userId: res.userId,
+            userRole: res.userRole,
+          };
+          StorageService.saveUser(user);
+          StorageService.saveToken(user.jwt);
+          if (StorageService.isAdminLoggedIn()) {
+            this.router.navigateByUrl('/admin/dashboard');
+          } else if (StorageService.isCustomerLoggedIn()) {
+            this.router.navigateByUrl('/customer/dashboard');
+          } else {
+            this.message.error('Bad Credentials', { nzDuration: 5000 });
+          }
         }
+      },(error) => {
+        this.message.error('Login failed, Please check your email or password', { nzDuration: 5000 });
       }
-    });
+    );
   }
 }

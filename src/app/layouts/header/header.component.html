@@ -1,12 +1,24 @@
 <div>
     <nz-header class="main-header" nz-row nzType="flex" class="custom-navbar">
         <div class="navbar-title">
-            <a routerLink="/login">Car Rental Service</a>
+            <a *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn" routerLink="/">Car Rental Service</a>
+            <a *ngIf="isAdminLoggedIn" routerLink="/">LoggedIn Admin</a>
+            <a *ngIf="isCustomerLoggedIn" routerLink="/">LoggedIn Customer</a>
         </div>
 
         <div class="nav-links">
-            <a nz-button nzType="link" routerLink="/register" routerLinkActive="active">Sign Up</a>
-            <a nz-button nzType="link" routerLink="/login" routerLinkActive="active">Log in</a>
+            <a *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn" nz-button nzType="link" routerLink="/register" routerLinkActive="active">
+                Sign Up
+            </a>
+            <a *ngIf="isAdminLoggedIn" nz-button nzType="link" routerLink="/admin/dashboard" routerLinkActive="active">
+                Dashboard
+            </a>
+            <a *ngIf="isCustomerLoggedIn" nz-button nzType="link" routerLink="/customer/dashboard" routerLinkActive="active">
+                Dashboard
+            </a>
+
+            <a *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn" nz-button nzType="link" routerLink="/login" routerLinkActive="active">Login</a>
+            <a *ngIf="isAdminLoggedIn || isCustomerLoggedIn" nz-button nzType="link" routerLink="/login" routerLinkActive="active" (click)="logout()">Sign Out</a>
         </div>
     </nz-header>
 </div>
