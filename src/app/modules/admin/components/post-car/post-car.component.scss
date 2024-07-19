@@ -21,16 +21,20 @@
     margin-bottom: 20px;
 }
 
-.profile-badge {
+.imgUploadContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.profile-badge {
+    margin-bottom: 10px;
+    height: auto;
+}
+
 .profile {
     height: 180px;
     width: 180px;
-    margin-bottom: 5px;
     object-fit: cover;
     border-radius: 50%;
 }
@@ -38,13 +42,11 @@
 .upload-label {
     width: 70px;
     height: 35px;
-    margin-top: 10px;
 }
 
 .upload-icon {
     width: 70px;
     height: 35px;
-    margin-top: 10px;
 }
 
 .login-form-button {

@@ -14,3 +14,18 @@ export interface User {
   userId: number;
   userRole: string;
 }
+
+export interface CarDto {
+  id?: number;
+  brand: string;
+  color: string;
+  name: string;
+  type: string;
+  transmission: string;
+  description: string;
+  price: number;
+  year: Date;
+  image?: File;
+  returnImage?: Uint8Array;
+}
+

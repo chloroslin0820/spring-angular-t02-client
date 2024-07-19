@@ -3,7 +3,7 @@
     <div class="parent">
       <div class="child">
         <div nz-row class="imgDiv">
-          <h2 style="margin-left: 45%">Post Car</h2>
+          <h2 style="margin: 0 auto">Post Car</h2>
         </div>
 
         <form nz-form [formGroup]="postCarForm">
@@ -13,7 +13,7 @@
               [nzMd]="24"
               [nzSm]="24"
               [nzXs]="24"
-              style="margin-bottom: 20px"
+              class="imgUploadContainer"
             >
               <div class="profile-badge">
                 <label
@@ -21,7 +21,9 @@
                   class="upload-label"
                   *ngIf="selectedFile"
                 >
-                  <img class="profile" [src]="imagePreview" alt="profile" />
+                  <div style="padding-left: 20%; margin-bottom: 10px">
+                    <img class="profile" [src]="imagePreview" alt="profile" />
+                  </div>
                 </label>
                 <input
                   type="file"
@@ -30,10 +32,10 @@
                   id="upload_profile_image"
                   accept="image/x-png,image/gif,image/jpeg"
                   (change)="onFileSelected($event)"
+                  style="margin-bottom: 20px"
                 />
               </div>
             </div>
-
             <div nz-col nzSpan="24">
               <nz-form-item>
                 <nz-form-control
@@ -128,7 +130,11 @@
                   [nzXs]="24"
                   nzErrorTip="This input is required!"
                 >
-                  <nz-year-picker style="width: 100%;" nzPlaceHolder="Model Year" formControlName="year"></nz-year-picker>
+                  <nz-year-picker
+                    style="width: 100%"
+                    nzPlaceHolder="Model Year"
+                    formControlName="year"
+                  ></nz-year-picker>
                 </nz-form-control>
               </nz-form-item>
             </div>
@@ -137,9 +143,24 @@
                 <nz-form-control
                   nzHasFeedback
                   [nzXs]="24"
-                  nzErrorTip="This input is required!"
+                  [nzErrorTip]="errorPrice"
                 >
                   <input nz-input placeholder="Price" formControlName="price" />
+                  <ng-template #errorPrice let-control>
+                    <ng-container
+                      *ngIf="postCarForm.get('price')?.hasError('required')"
+                    >
+                      <span nz-form-explain>This input is required!</span>
+                    </ng-container>
+                    <ng-container
+                      *ngIf="postCarForm.get('price')?.hasError('pattern')"
+                    >
+                      <span nz-form-explain
+                        >The input must be a valid number (e.g., 123 or
+                        123.45)!</span
+                      >
+                    </ng-container>
+                  </ng-template>
                 </nz-form-control>
               </nz-form-item>
             </div>

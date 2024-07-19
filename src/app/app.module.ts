@@ -15,6 +15,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { HeaderComponent } from './layouts/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgZorroImportsModules } from './NgZorroImportsModules';
+import { StorageService } from './auth/services/storage/storage.service';
 
 registerLocaleData(en);
 
@@ -36,7 +37,8 @@ registerLocaleData(en);
     provideClientHydration(),
     { provide: NZ_I18N, useValue: en_US },
     provideAnimationsAsync(),
-    provideHttpClient()
+    provideHttpClient(),
+    StorageService,
   ],
   bootstrap: [AppComponent]
 })
