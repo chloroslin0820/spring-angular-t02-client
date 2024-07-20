@@ -11,7 +11,7 @@ import { UpdateCarComponent } from './components/update-car/update-car.component
   declarations: [
     AdminDashboardComponent,
     PostCarComponent,
-    UpdateCarComponent
+    UpdateCarComponent,
   ],
   imports: [
     CommonModule,

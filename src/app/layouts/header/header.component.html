@@ -20,6 +20,10 @@
                 Dashboard
             </a>
 
+            <a *ngIf="isCustomerLoggedIn" nz-button nzType="link" routerLink="/customer/my_bookings" routerLinkActive="active">
+                My Bookings
+            </a>
+
             <a *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn" nz-button nzType="link" routerLink="/login" routerLinkActive="active">Login</a>
             <a *ngIf="isAdminLoggedIn || isCustomerLoggedIn" nz-button nzType="link" routerLink="/login" routerLinkActive="active" (click)="logout()">Sign Out</a>
         </div>

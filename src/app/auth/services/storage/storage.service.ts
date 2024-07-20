@@ -39,6 +39,11 @@ export class StorageService {
     return null;
   }
 
+  static getUserId(): number | null {
+    const user = this.getUser();
+    return user ? user.userId : null;
+  }
+
   static isAdminLoggedIn(): boolean {
     const user = this.getUser();
     return user ? user.userRole === 'Admin' : false;

@@ -31,18 +31,75 @@
           <b>{{ car.type }}</b> - Year : <b>{{ car.year }}</b>
         </h5>
         <hr />
-        <div style="float: right">
-          <button
-            nz-button
-            style="margin-left: 10px"
-            nzSize="small"
-            nzType="primary"
-            routerLink="/customer/car/{{ car.id }}"
-          >
-            Book
-          </button>
-        </div>
       </div>
     </div>
   </div>
+  <nz-spin
+    [nzSpinning]="isSpinning"
+    [nzSize]="'large'"
+    nzTip="Working..."
+    style="margin-top: 50px"
+    class="child"
+  >
+    <div class="dashboard-filter">
+      <form [formGroup]="validateForm">
+        <div class="filter-grid">
+          <div class="filter-select-dropdown filter-fields-width">
+            <nz-form-item>
+              <div style="width: 16%;">
+                <nz-form-label [nzSpan]="0" nzFor="From Date"
+                  >From Date</nz-form-label
+                >
+              </div>
+              <nz-form-control [nzSpan]="0" [nzErrorTip]="getErrorMessage('fromDate')">
+                <nz-date-picker
+                  formControlName="fromDate"
+                  name="From Date"
+                  nzPlaceHolder="From date"
+                  id="From Date"
+                  [nzFormat]="dateFormat"
+                  style="width: 100%"
+                ></nz-date-picker>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <div style="width: 16%;">
+                <nz-form-label [nzSpan]="0" nzFor="To Date"
+                  >To Date</nz-form-label
+                >
+              </div>
+              <nz-form-control [nzSpan]="0" [nzErrorTip]="getErrorMessage('toDate')">
+                <nz-date-picker
+                  formControlName="toDate"
+                  name="To Date"
+                  nzPlaceHolder="To date"
+                  id="To Date"
+                  [nzFormat]="dateFormat"
+                  style="width: 100%"
+                ></nz-date-picker>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <ng-container *ngIf="isToDateEarlier()">
+            <div style="color: red;">
+              From Date should be earlier than To Date
+            </div>
+          </ng-container>
+
+          <div class="filter-select-dropdown filter-fileds-width">
+            <button
+              class="filterBtn"
+              nz-button
+              nzType="primary"
+              [disabled]="validateForm.invalid"
+              (click)="postCarBooking(validateForm.value)"
+            >
+              Book Car
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </nz-spin>
 </div>

@@ -30,3 +30,18 @@ export interface CarDto {
   processedImage?: string;
 }
 
+export interface CarBookingDto {
+  id?: number;
+  carId?: number;
+  userId?: number;
+  fromDate: Date;
+  toDate: Date;
+  bookCarStatus?: BookingStatus;
+  userName?: string;
+  email?: string;
+  days?: number;
+  price?: number;
+}
+
+type BookingStatus = 'APPROVED' | 'PENDING' | 'REJECTED';
+
