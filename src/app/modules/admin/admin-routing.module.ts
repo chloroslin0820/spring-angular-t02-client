@@ -5,11 +5,13 @@ import { PostCarComponent } from './components/post-car/post-car.component';
 import { NgZorroImportsModules } from '../../NgZorroImportsModules';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateCarComponent } from './components/update-car/update-car.component';
+import { GetBookingsComponent } from './components/get-bookings/get-bookings.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: AdminDashboardComponent },
   { path: 'car', component: PostCarComponent },
-  { path: 'car/:id', component: UpdateCarComponent}
+  { path: 'car/:id', component: UpdateCarComponent},
+  { path: 'bookings', component: GetBookingsComponent},
 ];
 
 @NgModule({

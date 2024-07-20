@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CarDto } from '../../../types';
+import { CarBookingDto, CarDto } from '../../../types';
 import { Observable } from 'rxjs';
 import { StorageService } from '../../../auth/services/storage/storage.service';
 
@@ -41,6 +41,12 @@ export class AdminService {
 
   updateCar(id: number, formData: any): Observable<any> {
     return this.http.put<any>(`${API_URL}/api/admin/car/${id}`, formData, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+  getCarBookings(): Observable<CarBookingDto[]> {
+    return this.http.get<CarBookingDto[]>(`${API_URL}/api/admin/car/bookings`, {
       headers: this.createAuthorizationHeader()
     });
   }
