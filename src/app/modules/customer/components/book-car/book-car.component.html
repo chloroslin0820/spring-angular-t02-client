@@ -1,9 +1,17 @@
-<div style="background-color: #f8f8f8; min-height: 91vh; padding-top: 20px; padding-bottom: 20px;">
-  <div class="child" *ngFor="let car of cars" style="margin-bottom: 5px">
+<div
+  style="
+    background-color: #f8f8f8;
+    min-height: 91vh;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  "
+  *ngIf="car"
+>
+  <div class="child">
     <div nz-row>
       <div nz-col nzSpan="8">
         <img
-          [src]="car.processedImage"
+          [src]="processedImage"
           alt="profile"
           class="profile"
           style="height: 130px; width: 200px; border-radius: 10px"

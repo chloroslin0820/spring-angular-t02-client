@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CustomerService } from '../../services/customer.service';
 import { CarDto } from '../../../../types';
-import { StorageService } from '../../../../auth/services/storage/storage.service';
 
 @Component({
   selector: 'app-customer-dashboard',
