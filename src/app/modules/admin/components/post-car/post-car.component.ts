@@ -47,7 +47,7 @@ export class PostCarComponent {
       color: [null, [Validators.required]],
       transmission: [null, [Validators.required]],
       price: [null, [Validators.required, Validators.pattern(/^\d*\.?\d+$/)]],
-      description: [null],
+      description: [''],
       year: [null, [Validators.required]],
     });
   }

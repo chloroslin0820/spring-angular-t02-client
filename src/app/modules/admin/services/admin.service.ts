@@ -39,6 +39,12 @@ export class AdminService {
     });
   }
 
+  updateCar(id: number, formData: any): Observable<any> {
+    return this.http.put<any>(`${API_URL}/api/admin/car/${id}`, formData, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
   createAuthorizationHeader() {
     let authHeaders: HttpHeaders = new HttpHeaders();
     return authHeaders.set(

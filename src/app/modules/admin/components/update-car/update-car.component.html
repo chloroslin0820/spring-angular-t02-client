@@ -9,12 +9,12 @@
                 <form nz-form [formGroup]="updateForm">
                     <div nz-row>
                         <div class="file-upload-container">
-                            <!-- <label class="file-upload-label">
-                                <span style="margin-left: 100px;">Select a file</span>
+                            <label class="file-upload-label">
+                                <span style="text-align: center;">Select a file</span>
                                 <input 
                                     type="file" 
                                     nz-button nzType="primary" 
-                                    accept="image/x-png,image/gif,image/jpeg"
+                                    accept="image/x-png,image/gif,image/jpeg,image/webp"
                                     (change)="onFileSelected($event)"
                                 >
                             </label>
@@ -23,7 +23,7 @@
                                 <div class="circle-image">
                                     <img [src]="imagePreview" alt="Existing Image" class="preview-image">
                                 </div>
-                            </div> -->
+                            </div>
 
                             <div *ngIf="existingImage" class="image-preview">
                                 <div class="circle-image">
@@ -92,14 +92,14 @@
                             <div nz-col nzSpan="24">
                                 <nz-form-item>
                                     <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required">
-                                        <textarea rows="1" nz-input placeholder="Description"></textarea>
+                                        <textarea rows="1" nz-input placeholder="Description" formControlName="description"></textarea>
                                     </nz-form-control>
                                 </nz-form-item>
                             </div>
                         </div>
                     </div>
 
-                    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">
+                    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click)="updateCar()">
                         Update
                     </button>
                 </form>
