@@ -14,6 +14,7 @@ export class PostCarComponent {
   postCarForm!: FormGroup;
   selectedFile: File | null = null;
   imagePreview: string | ArrayBuffer | null = null;
+  listOfOption: Array<{ value: string; label: string }> = [];
   listOfBrands = [
     'BMW',
     'AUDI',

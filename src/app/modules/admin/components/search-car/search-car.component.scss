@@ -1,0 +1,37 @@
+.inner-content {
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  margin: 10px auto;
+}
+
+.dashboard-filter {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 90vw;
+  align-items: center;
+}
+
+.filter-grid {
+  width: 100%;
+}
+
+.filter-select-dropdown {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+}
+
+nz-form-item {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  width: 30%;
+  margin-top: 20px;
+  background-color: #003973;
+}
