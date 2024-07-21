@@ -3,9 +3,10 @@ import { Injectable } from '@angular/core';
 import { CarBookingDto, CarDto } from '../../../types';
 import { Observable } from 'rxjs';
 import { StorageService } from '../../../auth/services/storage/storage.service';
-// import { environment } from '../../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
-const API_URL = ['http://chloroslin-spring-angular-t02-se-env.eba-mwidv9bj.ap-southeast-1.elasticbeanstalk.com']
+// const API_URL = ['http://chloroslin-spring-angular-t02-se-env.eba-mwidv9bj.ap-southeast-1.elasticbeanstalk.com']
+const API_URL = environment.API_URL;
 
 @Injectable({
   providedIn: 'root'
