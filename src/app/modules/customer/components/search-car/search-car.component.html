@@ -97,20 +97,20 @@
 
 <div class="container">
   <div class="child" *ngFor="let car of cars">
-    <div nz-row style="width: 100%">
-      <div nz-col nzSpan="8">
+    <div nz-row style="width: 100%" class="formRow">
+      <div nz-col nzSpan="8" class="leftSpan">
         <img [src]="car.processedImage" alt="profile" class="profile" />
       </div>
-      <div nz-col nzSpan="16">
+      <div nz-col nzSpan="16" class="rightSpan">
         <h2>{{ car.brand }} - {{ car.name }}</h2>
         <p>{{ car.description }}</p>
-        <hr />
+        <hr>
         <h5>
           Price: <b>${{ car.price }}</b> - Color: <b>{{ car.color }}</b> -
           Transmission: <b>{{ car.transmission }}</b> - Type:
           <b>{{ car.type }}</b> - Year: <b>{{ car.year | date : "yyyy" }}</b>
         </h5>
-        <hr />
+        <hr>
       </div>
     </div>
   </div>

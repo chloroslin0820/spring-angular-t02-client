@@ -1,18 +1,18 @@
 <div style="background-color: #f8f8f8; min-height: 91vh; padding-bottom: 20px;">
   <div style="padding-top: 10px"></div>
 
-  <div style="margin-top: 10px" class="child" *ngFor="let car of cars">
-    <div nz-row>
-      <div nz-col nzSpan="8">
+  <div style="margin-top: 10px; width: 90%;" class="child" *ngFor="let car of cars">
+    <div class="formRow" nz-row>
+      <div nz-col nzSpan="8" class="leftSpan">
         <img
           [src]="car.processedImage"
           alt="profile"
           class="profile"
-          style="height: 130px; width: 200px; border-radius: 10px"
+          style="height: auto; width: 90%; border-radius: 10px"
         />
       </div>
 
-      <div nz-col nzSpan="16">
+      <div nz-col nzSpan="16" class="rightSpan">
         <h2 style="cursor: pointer; color: #108ee9">
           {{ car.brand }} - {{ car.name }}
         </h2>

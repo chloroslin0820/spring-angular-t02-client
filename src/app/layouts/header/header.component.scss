@@ -21,7 +21,7 @@
     margin: 0;
     padding: 0;
     top: 15px;
-    right: -40px;
+    right: 0;
     display: none;
 
     @media (max-width: 550px) {
@@ -58,17 +58,6 @@
       }
     }
   }
-
-//   .nav-links.allUser {
-//     padding-bottom: 4px;
-
-//     > a {
-//       color: white;
-//       padding-left: 10px;
-
-      
-//     }
-//   }
 
   .nav-links {
     padding-bottom: 4px;

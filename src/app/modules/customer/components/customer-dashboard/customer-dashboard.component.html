@@ -1,16 +1,16 @@
 <div style="background-color: #f8f8f8; min-height: 91vh; padding-top: 20px; padding-bottom: 20px;">
-  <div class="child" *ngFor="let car of cars" style="margin-bottom: 5px">
-    <div nz-row>
-      <div nz-col nzSpan="8">
+  <div class="child" *ngFor="let car of cars" style="margin-top: 10px; width: 90%;">
+    <div nz-row class="formRow">
+      <div nz-col nzSpan="8" class="leftSpan">
         <img
           [src]="car.processedImage"
           alt="profile"
           class="profile"
-          style="height: 130px; width: 200px; border-radius: 10px"
+          style="height: auto; width: 90%; border-radius: 10px"
         />
       </div>
 
-      <div nz-col nzSpan="16">
+      <div nz-col nzSpan="16" class="rightSpan">
         <h2 style="cursor: pointer; color: #108ee9">
           {{ car.brand }} - {{ car.name }}
         </h2>

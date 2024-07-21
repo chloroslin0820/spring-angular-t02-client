@@ -88,4 +88,22 @@ nz-form-item {
       width: 100%;
     }
   }
+
+  .formRow {
+    @media (max-width: 768px) {
+      padding-top: 3%;
+      display: block;
+      min-width: 100%;
+      height: auto;
+      box-sizing: border-box;
+      overflow-y: scroll;
+  
+      .leftSpan {
+        min-width: 100%;
+      }
+      .rightSpan {
+        min-width: 100%;
+      }
+    }
+  }
 }
