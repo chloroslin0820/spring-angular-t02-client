@@ -16,6 +16,7 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgZorroImportsModules } from './NgZorroImportsModules';
 import { StorageService } from './auth/services/storage/storage.service';
+import { HomeComponent } from './home/home.component';
 
 registerLocaleData(en);
 
@@ -24,7 +25,8 @@ registerLocaleData(en);
     AppComponent,
     LoginComponent,
     SignupComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

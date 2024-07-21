@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { AdminService } from '../../services/admin.service';
 import { CarDto } from '../../../../types';
+import { CustomerService } from '../../services/customer.service';
 
 @Component({
   selector: 'app-search-car',
@@ -45,7 +45,7 @@ export class SearchCarComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private adminService: AdminService
+    private customerService: CustomerService,
   ) {
     this.searchCarForm = this.formBuilder.group({
       brand: [null],
@@ -58,12 +58,14 @@ export class SearchCarComponent {
   searchCar() {
     this.cars = [];
     this.isSpinning = true;
-    this.adminService.searchCar(this.searchCarForm.value).subscribe((res: any) => {
-      res.carDtoList.forEach((car: any) => {
-        car.processedImage = 'data:image/jpeg;base64,' + car.returnImage;
-        this.cars.push(car);
+    this.customerService
+      .searchCar(this.searchCarForm.value)
+      .subscribe((res: any) => {
+        res.carDtoList.forEach((car: any) => {
+          car.processedImage = 'data:image/jpeg;base64,' + car.returnImage;
+          this.cars.push(car);
+        });
+        this.isSpinning = false;
       });
-      this.isSpinning = false;
-    });
   }
 }

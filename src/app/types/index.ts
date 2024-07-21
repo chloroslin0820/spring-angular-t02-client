@@ -19,12 +19,12 @@ export interface CarDto {
   id?: number;
   brand: string;
   color: string;
-  name: string;
+  name?: string;
   type: string;
   transmission: string;
-  description: string;
-  price: number;
-  year: Date;
+  description?: string;
+  price?: number;
+  year?: Date;
   image?: File;
   returnImage?: Uint8Array;
   processedImage?: string;

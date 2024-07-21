@@ -1,36 +1,240 @@
-<div>
-    <nz-header class="main-header" nz-row nzType="flex" class="custom-navbar">
-        <div class="navbar-title">
-            <a *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn" routerLink="/">Car Rental Service</a>
-            <a *ngIf="isAdminLoggedIn" style="cursor: default;">LoggedIn Admin</a>
-            <a *ngIf="isCustomerLoggedIn" style="cursor: default;">LoggedIn Customer</a>
-        </div>
+<div style="position: relative">
+  <nz-header class="main-header" nz-row nzType="flex" class="custom-navbar">
+    <div class="navbar-title">
+      <a *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn" routerLink="/"
+        >Car Rental Service</a
+      >
+      <a *ngIf="isAdminLoggedIn" style="cursor: default">LoggedIn Admin</a>
+      <a *ngIf="isCustomerLoggedIn" style="cursor: default"
+        >LoggedIn Customer</a
+      >
+    </div>
 
-        <div class="nav-links">
-            <a *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn" nz-button nzType="link" routerLink="/register" routerLinkActive="active">
-                Sign Up
+    <ul class="menuBar" nz-menu nzMode="inline" (click)="toggleMenu()">
+      <li
+        class="menuTitle"
+        nz-submenu
+        nzTitle="Menu"
+        nzIcon="menu"
+        [nzOpen]="isMenuOpen"
+      >
+        <ul
+          class="menuList allUser"
+          *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn && isMenuItemOpen"
+        >
+          <li (click)="toggleMenuItem()">
+            <a
+              nz-button
+              nzType="link"
+              routerLink="/register"
+              routerLinkActive="active"
+            >
+              Sign Up
             </a>
-            <a *ngIf="isAdminLoggedIn" nz-button nzType="link" routerLink="/admin/dashboard" routerLinkActive="active">
-                Dashboard
+          </li>
+          <li (click)="toggleMenuItem()">
+            <a
+              nz-button
+              nzType="link"
+              routerLink="/login"
+              routerLinkActive="active"
+              >Login
             </a>
-            <a *ngIf="isAdminLoggedIn" nz-button nzType="link" routerLink="/admin/car" routerLinkActive="active">
-                Post Car
-            </a>
-            <a *ngIf="isAdminLoggedIn" nz-button nzType="link" routerLink="/admin/bookings" routerLinkActive="active">
-                Bookings
-            </a>
-            <a *ngIf="isAdminLoggedIn" nz-button nzType="link" routerLink="/admin/search" routerLinkActive="active">
-                Search
-            </a>
-            <a *ngIf="isCustomerLoggedIn" nz-button nzType="link" routerLink="/customer/dashboard" routerLinkActive="active">
-                Dashboard
-            </a>
-            <a *ngIf="isCustomerLoggedIn" nz-button nzType="link" routerLink="/customer/my_bookings" routerLinkActive="active">
-                My Bookings
-            </a>
+          </li>
+        </ul>
 
-            <a *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn" nz-button nzType="link" routerLink="/login" routerLinkActive="active">Login</a>
-            <a *ngIf="isAdminLoggedIn || isCustomerLoggedIn" nz-button nzType="link" routerLink="/login" routerLinkActive="active" (click)="logout()">Sign Out</a>
-        </div>
-    </nz-header>
+        <ul class="menuList admin" *ngIf="isAdminLoggedIn">
+          <li (click)="toggleMenuItem()">
+            <a
+              nz-button
+              nzType="link"
+              routerLink="/admin/dashboard"
+              routerLinkActive="active"
+            >
+              Dashboard
+            </a>
+          </li>
+          <li (click)="toggleMenuItem()">
+            <a
+              nz-button
+              nzType="link"
+              routerLink="/admin/car"
+              routerLinkActive="active"
+            >
+              Post Car
+            </a>
+          </li>
+          <li (click)="toggleMenuItem()">
+            <a
+              nz-button
+              nzType="link"
+              routerLink="/admin/bookings"
+              routerLinkActive="active"
+            >
+              Bookings
+            </a>
+          </li>
+          <li (click)="toggleMenuItem()">
+            <a
+              nz-button
+              nzType="link"
+              routerLink="/admin/search"
+              routerLinkActive="active"
+            >
+              Search
+            </a>
+          </li>
+          <li (click)="toggleMenuItem()">
+            <a
+              nz-button
+              nzType="link"
+              routerLink="/login"
+              routerLinkActive="active"
+              (click)="logout()"
+            >
+              Sign Out
+            </a>
+          </li>
+        </ul>
+
+        <ul class="menuList customer" *ngIf="isCustomerLoggedIn">
+          <li (click)="toggleMenuItem()">
+            <a
+              nz-button
+              nzType="link"
+              routerLink="/customer/dashboard"
+              routerLinkActive="active"
+            >
+              Dashboard
+            </a>
+          </li>
+          <li (click)="toggleMenuItem()">
+            <a
+              nz-button
+              nzType="link"
+              routerLink="/customer/my_bookings"
+              routerLinkActive="active"
+            >
+              Bookings
+            </a>
+          </li>
+          <li (click)="toggleMenuItem()">
+            <a
+              nz-button
+              nzType="link"
+              routerLink="/customer/search"
+              routerLinkActive="active"
+            >
+              Search Car
+            </a>
+          </li>
+          <li (click)="logout()">
+            <a
+              nz-button
+              nzType="link"
+              routerLink="/login"
+              routerLinkActive="active"
+            >
+              Sign Out
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <div
+      class="nav-links allUser"
+      *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn"
+    >
+      <a
+        nz-button
+        nzType="link"
+        routerLink="/register"
+        routerLinkActive="active"
+      >
+        Sign Up
+      </a>
+      <a nz-button nzType="link" routerLink="/login" routerLinkActive="active"
+        >Login
+      </a>
+    </div>
+
+    <div class="nav-links admin" *ngIf="isAdminLoggedIn">
+      <a
+        nz-button
+        nzType="link"
+        routerLink="/admin/dashboard"
+        routerLinkActive="active"
+      >
+        Dashboard
+      </a>
+      <a
+        nz-button
+        nzType="link"
+        routerLink="/admin/car"
+        routerLinkActive="active"
+      >
+        Post Car
+      </a>
+      <a
+        nz-button
+        nzType="link"
+        routerLink="/admin/bookings"
+        routerLinkActive="active"
+      >
+        Bookings
+      </a>
+      <a
+        nz-button
+        nzType="link"
+        routerLink="/admin/search"
+        routerLinkActive="active"
+      >
+        Search
+      </a>
+      <a
+        nz-button
+        nzType="link"
+        routerLink="/login"
+        routerLinkActive="active"
+        (click)="logout()"
+        >Sign Out
+      </a>
+    </div>
+
+    <div class="nav-links client" *ngIf="isCustomerLoggedIn">
+      <a
+        nz-button
+        nzType="link"
+        routerLink="/customer/dashboard"
+        routerLinkActive="active"
+      >
+        Dashboard
+      </a>
+      <a
+        nz-button
+        nzType="link"
+        routerLink="/customer/my_bookings"
+        routerLinkActive="active"
+      >
+        Bookings
+      </a>
+      <a
+        nz-button
+        nzType="link"
+        routerLink="/customer/search"
+        routerLinkActive="active"
+      >
+        Search Car
+      </a>
+      <a
+        nz-button
+        nzType="link"
+        routerLink="/login"
+        routerLinkActive="active"
+        (click)="logout()"
+        >Sign Out</a
+      >
+    </div>
+  </nz-header>
 </div>

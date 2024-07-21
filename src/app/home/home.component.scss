@@ -1,0 +1,29 @@
+.hero-section {
+  position: relative;
+  height: 100vh;
+  background-image: url("/car_hero.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-content {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+  }
+
+p {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+  color: red;
+}

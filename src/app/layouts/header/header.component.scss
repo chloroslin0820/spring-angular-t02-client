@@ -1,25 +1,89 @@
 .custom-navbar {
-    background-color: #003973;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 4px;
+  background-color: #003973;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px;
 
-    .navbar-title {
-        > a {
-            color: white;
-            margin-left: 10px;
-            font-size: 18px;
-            font-weight: bolder;
-        }
+  .navbar-title {
+    > a {
+      color: white;
+      margin-left: 10px;
+      font-size: 18px;
+      font-weight: bolder;
+    }
+  }
+
+  .menuBar {
+    position: absolute;
+    width: 150px;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    top: 15px;
+    right: -40px;
+    display: none;
+
+    @media (max-width: 550px) {
+      display: block;
+      color: white;
+      z-index: 2;
     }
 
-    .nav-links {
-        padding-bottom: 4px;
+    .menuTitle {
+      margin: 0;
+      padding: 0;
 
-        > a {
+      &:hover {
+        color: yellow;
+      }
+
+      .menuList {
+        background-color: #003973;
+        padding: 0;
+        margin: 0;
+
+        li {
+          a {
+            padding: 0 22px;
+            margin: 0;
             color: white;
-            margin-left: 10px;
+            height: 55px;
+
+            &:hover {
+              color: yellow;
+            }
+          }
         }
+      }
     }
+  }
+
+//   .nav-links.allUser {
+//     padding-bottom: 4px;
+
+//     > a {
+//       color: white;
+//       padding-left: 10px;
+
+      
+//     }
+//   }
+
+  .nav-links {
+    padding-bottom: 4px;
+
+    > a {
+      color: white;
+      padding-left: 10px;
+
+      @media (max-width: 768px) {
+        padding: 0 4px;
+      }
+
+      @media (max-width: 550px) {
+        display: none;
+      }
+    }
+  }
 }

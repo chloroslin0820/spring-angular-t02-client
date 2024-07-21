@@ -24,7 +24,6 @@ export class MyBookingsComponent {
     this.customerService.getBookingsByUserId().subscribe((res) => {
       this.isSpinning = false;
       this.bookings = res;
-      console.log(this.bookings);
     });
   }
 }

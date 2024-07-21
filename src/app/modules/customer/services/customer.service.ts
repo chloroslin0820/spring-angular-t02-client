@@ -39,6 +39,12 @@ export class CustomerService {
     });
   }
 
+  searchCar(searchCarDto: CarDto): Observable<CarDto> {
+    return this.http.post<CarDto>(`${API_URL}/api/customer/car/search`, searchCarDto, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
   createAuthorizationHeader() {
     let authHeaders: HttpHeaders = new HttpHeaders();
     return authHeaders.set(

@@ -8,6 +8,8 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @NgModule({
   exports: [
@@ -20,6 +22,8 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     NzTimePickerModule,
     NzDatePickerModule,
     NzTableModule,
+    NzMenuModule,
+    NzIconModule,
   ],
 })
 export class NgZorroImportsModules {}

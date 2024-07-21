@@ -5,13 +5,15 @@ import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerDashboardComponent } from './components/customer-dashboard/customer-dashboard.component';
 import { BookCarComponent } from './components/book-car/book-car.component';
 import { MyBookingsComponent } from './components/my-bookings/my-bookings.component';
+import { SearchCarComponent } from './components/search-car/search-car.component';
 
 
 @NgModule({
   declarations: [
     CustomerDashboardComponent,
     BookCarComponent,
-    MyBookingsComponent
+    MyBookingsComponent,
+    SearchCarComponent
   ],
   imports: [
     CommonModule,
