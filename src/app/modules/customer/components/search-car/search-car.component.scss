@@ -23,6 +23,14 @@
   gap: 10px;
   grid-template-columns: repeat(2, 1fr);
   width: 100%;
+
+  @media (max-width: 728px) {
+    display: block;
+
+    nz-form-item {
+      display: block;
+    }
+  }
 }
 
 nz-form-item {
@@ -34,6 +42,11 @@ nz-form-item {
   width: 30%;
   margin-top: 20px;
   background-color: #003973;
+
+  @media (max-width: 728px) {
+    padding: 1px;
+    font-size: 10px;
+  }
 }
 
 .container {

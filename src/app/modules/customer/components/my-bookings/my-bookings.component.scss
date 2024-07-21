@@ -1,0 +1,16 @@
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.nz-table {
+  min-width: 600px;
+}
+
+@media (max-width: 700px) {
+  .nz-table th,
+  .nz-table td {
+    font-size: 12px;
+    padding: 8px;
+  }
+}
