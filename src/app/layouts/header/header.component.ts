@@ -18,10 +18,13 @@ export class HeaderComponent {
   ngOnInit() {
     StorageService.clearUserStorage();
     this.router.events.subscribe((event) => {
-      if (event.constructor.name === 'NavigationEnd') {
+      // if (event.constructor.name === 'NavigationEnd') {
+      if (StorageService.getUser()?.userRole === 'Admin') {
         this.isAdminLoggedIn = StorageService.isAdminLoggedIn();
+      } else if (StorageService.getUser()?.userRole === 'Customer') {
         this.isCustomerLoggedIn = StorageService.isCustomerLoggedIn();
       }
+      // }
     });
   }
 
