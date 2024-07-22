@@ -19,7 +19,7 @@ export class LoginComponent {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private message: NzMessageService,
+    private message: NzMessageService
   ) {}
 
   ngOnInit() {
@@ -30,7 +30,8 @@ export class LoginComponent {
   }
 
   login() {
-    this.authService.login(this.loginForm.value).subscribe((res: User) => {
+    this.authService.login(this.loginForm.value).subscribe(
+      (res: User) => {
         if (res.userId != null) {
           const user: User = {
             jwt: res.jwt,
@@ -39,6 +40,7 @@ export class LoginComponent {
           };
           StorageService.saveUser(user);
           StorageService.saveToken(user.jwt);
+
           if (StorageService.isAdminLoggedIn()) {
             this.router.navigateByUrl('/admin/dashboard');
           } else if (StorageService.isCustomerLoggedIn()) {
@@ -47,8 +49,12 @@ export class LoginComponent {
             this.message.error('Bad Credentials', { nzDuration: 5000 });
           }
         }
-      },(error) => {
-        this.message.error('Login failed, Please check your email or password', { nzDuration: 5000 });
+      },
+      (error) => {
+        this.message.error(
+          'Login failed, Please check your email or password',
+          { nzDuration: 5000 }
+        );
       }
     );
   }
