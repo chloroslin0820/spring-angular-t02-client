@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 import { User } from '../../../types';
 
-export class CookieStorageService {
+export class StorageService {
   static saveToken(token: string): void {
     Cookies.set('token', token, { secure: true });
   }
