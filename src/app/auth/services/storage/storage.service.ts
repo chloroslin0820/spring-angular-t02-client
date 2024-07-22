@@ -46,7 +46,7 @@ export class StorageService {
 
   static isAdminLoggedIn(): boolean {
     const user = this.getUser();
-    if (user?.userRole == 'Admin') {
+    if (user?.userRole == 'Admin' || user) {
       return user.userRole === 'Admin';
     } else {
       return false;
@@ -55,7 +55,7 @@ export class StorageService {
 
   static isCustomerLoggedIn(): boolean {
     const user = this.getUser();
-    if (user?.userRole == 'Customer') {
+    if (user?.userRole == 'Customer' || user) {
       return user.userRole === 'Customer';
     } else {
       return false;
