@@ -26,7 +26,6 @@ export class GetBookingsComponent {
       (res) => {
         this.isSpinning = false;
         this.bookings = res;
-        console.log(this.bookings);
       },
       (error) => {
         console.error(error);

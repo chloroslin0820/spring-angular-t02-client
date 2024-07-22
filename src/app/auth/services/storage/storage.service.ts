@@ -1,5 +1,4 @@
-import e from "express";
-import { User } from "../../../types";
+import { User } from '../../../types';
 
 export class StorageService {
   private static isBrowser(): boolean {
@@ -47,8 +46,9 @@ export class StorageService {
 
   static isAdminLoggedIn(): boolean {
     const user = this.getUser();
-    if(user) {
+    if (user?.userRole == 'Admin') {
       console.log(user.userRole);
+      return user.userRole === 'Admin';
     } else {
       console.log('user is null');
     }
@@ -57,8 +57,9 @@ export class StorageService {
 
   static isCustomerLoggedIn(): boolean {
     const user = this.getUser();
-    if(user) {
+    if (user?.userRole == 'Customer') {
       console.log(user.userRole);
+      return user.userRole === 'Customer';
     } else {
       console.log('user is null');
     }
