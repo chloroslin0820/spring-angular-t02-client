@@ -12,6 +12,7 @@ export class StorageService {
   }
 
   static getToken(): string | null {
+    this.clearUserStorage();
     if (this.isBrowser()) {
       return window.localStorage.getItem('token');
     }
@@ -32,6 +33,7 @@ export class StorageService {
   }
 
   static getUser(): User | null {
+    this.clearUserStorage();
     if (this.isBrowser()) {
       const user = window.localStorage.getItem('user');
       return user ? JSON.parse(user) : null;
