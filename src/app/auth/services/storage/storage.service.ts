@@ -12,7 +12,6 @@ export class StorageService {
   }
 
   static getToken(): string | null {
-    this.clearUserStorage();
     if (this.isBrowser()) {
       return window.localStorage.getItem('token');
     }
@@ -33,7 +32,6 @@ export class StorageService {
   }
 
   static getUser(): User | null {
-    this.clearUserStorage();
     if (this.isBrowser()) {
       const user = window.localStorage.getItem('user');
       return user ? JSON.parse(user) : null;
@@ -48,7 +46,7 @@ export class StorageService {
 
   static isAdminLoggedIn(): boolean {
     const user = this.getUser();
-    if (user?.userRole == 'Admin' || user) {
+    if (user?.userRole == 'Admin') {
       return user.userRole === 'Admin';
     } else {
       return false;
@@ -57,7 +55,7 @@ export class StorageService {
 
   static isCustomerLoggedIn(): boolean {
     const user = this.getUser();
-    if (user?.userRole == 'Customer' || user) {
+    if (user?.userRole == 'Customer') {
       return user.userRole === 'Customer';
     } else {
       return false;
