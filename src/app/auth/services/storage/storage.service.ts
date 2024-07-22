@@ -1,3 +1,4 @@
+import e from "express";
 import { User } from "../../../types";
 
 export class StorageService {
@@ -46,11 +47,21 @@ export class StorageService {
 
   static isAdminLoggedIn(): boolean {
     const user = this.getUser();
+    if(user) {
+      console.log(user.userRole);
+    } else {
+      console.log('user is null');
+    }
     return user ? user.userRole === 'Admin' : false;
   }
 
   static isCustomerLoggedIn(): boolean {
     const user = this.getUser();
+    if(user) {
+      console.log(user.userRole);
+    } else {
+      console.log('user is null');
+    }
     return user ? user.userRole === 'Customer' : false;
   }
 }
