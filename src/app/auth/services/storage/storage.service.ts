@@ -19,10 +19,8 @@ export class StorageService {
   }
 
   static clearUserStorage(): void {
-    if (this.isBrowser()) {
-      window.localStorage.removeItem('token');
-      window.localStorage.removeItem('user');
-    }
+    window.localStorage.removeItem('token');
+    window.localStorage.removeItem('user');
   }
 
   static saveUser(user: User): void {
