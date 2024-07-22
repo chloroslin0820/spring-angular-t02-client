@@ -29,6 +29,8 @@ export class HeaderComponent {
   }
 
   logout() {
+    this.isAdminLoggedIn = false;
+    this.isCustomerLoggedIn = false;
     StorageService.clearUserStorage();
     this.router.navigateByUrl('/login');
   }
